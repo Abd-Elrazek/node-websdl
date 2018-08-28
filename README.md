@@ -40,3 +40,13 @@ setInterval(function() {
 }, 1000 / 30);
 ```
 
+
+## Installation Quirks
+
+- [ ] Have `libpng12` installed
+- [ ] `npm install` - if it fails go to next point
+- [ ] Clone `https://github.com/node-ffi/node-ffi.git` to `node_modules/ffi`
+- [ ] Do a `node-gyp rebuild` inside `node_modules/ffi`
+- [ ] Newest `libSDL2-2.0.so` should be shipped in `src/lib/linux/x64` folder
+- [ ] In case you need to recompile `sdl2` and `sdl2_image`, rebuild accordingly to libsdl.org.
+

@@ -209,9 +209,12 @@ module.exports = {
 	init: SDL.SDL_Init,
 	quit: SDL.SDL_Quit,
 
+	setRenderDrawColor:       SDL.SDL_SetRenderDrawColor,
 	getRenderDrawColor:       SDL.SDL_GetRenderDrawColor,
 	setRenderDrawBlendMode:   SDL.SDL_SetRenderDrawBlendMode,
 	getRenderDrawBlendMode:   SDL.SDL_GetRenderDrawBlendMode,
+	renderClear:              SDL.SDL_RenderClear,
+	renderCopy:               SDL.SDL_RenderCopy,
 	renderDrawPoint:          SDL.SDL_RenderDrawPoint,
 	renderDrawPoints:         SDL.SDL_RenderDrawPoints,
 	renderDrawLine:           SDL.SDL_RenderDrawLine,
@@ -222,6 +225,7 @@ module.exports = {
 	renderFillRects:          SDL.SDL_RenderFillRects,
 	renderCopyEx:             SDL.SDL_RenderCopyEx,
 	renderReadPixels:         SDL.SDL_RenderReadPixels,
+	renderPresent:            SDL.SDL_RenderPresent,
 
 
 
@@ -236,7 +240,7 @@ module.exports = {
 
 		return {
 
-			_ref:    renderer,
+			_ref:  renderer,
 
 			clear: function() {
 

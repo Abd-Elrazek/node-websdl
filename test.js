@@ -4,21 +4,12 @@
 const SDL = require('./src/SDL.js');
 
 
-// const SDL_events = require('./src/SDL_events.js');
-// const SDL_image  = require('./src/SDL_image.js');
-// const SDL_rect   = require('./src/SDL_rect.js');
-// const SDL_render = require('./src/SDL_render.js');
-// const SDL_video  = require('./src/SDL_video.js');
-
-
-
 SDL.init(SDL.INIT.everything);
 
 
 let window   = SDL.createWindow('Hello World', 100, 100, 640, 480, SDL.WINDOW.shown | SDL.WINDOW.resizable);
 let renderer = SDL.createRenderer(window, -1, SDL.RENDERER.accelerated);
-let surface  = SDL.loadImage(__dirname + '/test.png');
-let texture  = SDL.createTextureFromSurface(renderer, surface);
+let texture  = SDL.createTexture(renderer, __dirname + '/test.png');
 
 let dst = new SDL.Rect({
 	x: 32,
@@ -26,11 +17,6 @@ let dst = new SDL.Rect({
 	w: 128,
 	h: 128
 });
-
-
-if (window.isNull() || renderer.isNull()) {
-	console.log('SHIT, window or renderer is null');
-}
 
 
 
@@ -63,12 +49,12 @@ setInterval(function() {
 	dst.y = dst.y + fy * 5;
 
 
-	SDL.setRenderDrawColor(renderer, r, g, b, a);
+	SDL.setRenderDrawColor(renderer._ref, r, g, b, a);
 
 
-	SDL.renderClear(renderer);
-	SDL.renderCopy(renderer, texture, null, dst.ref());
-	SDL.renderPresent(renderer);
+	SDL.renderClear(renderer._ref);
+	SDL.renderCopy(renderer._ref, texture._ref, null, dst.ref());
+	SDL.renderPresent(renderer._ref);
 
 
 
